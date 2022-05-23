@@ -38,7 +38,7 @@ function game() {
             console.log(`Tie! Score: ${playerScore} : ${computerScore}`);
         }
     }
-    console.log(playerScore > computerScore ? `You won the game! Score: ${playerScore} : ${computerScore}` : playerScore < computerScore ? `Game over! Score: ${playerScore} : ${computerScore}` : `Tie!`);
+    console.log(playerScore > computerScore ? `You won the game! Score: ${playerScore} : ${computerScore}` : playerScore < computerScore ? `Game over! Score: ${playerScore} : ${computerScore}` : `Tie! Score: ${playerScore} : ${computerScore}`);
 }
 
 game();
