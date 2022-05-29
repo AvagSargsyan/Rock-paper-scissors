@@ -15,4 +15,4 @@ Tools
 * Linux terminal
 * Git and GitHub
 
-[Link] (https://avagsargsyan.github.io/Rock-paper-scissors/)
+[Link](https://avagsargsyan.github.io/Rock-paper-scissors/)
