@@ -1,8 +1,8 @@
 # Rock paper scissors
 
-**Version 1.0**
+**Version 2.0**
 
-A simple rock paper scissors game. 
+A simple rock paper scissors game.
 
 ### Build with 
 
