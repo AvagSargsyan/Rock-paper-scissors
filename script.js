@@ -1,3 +1,17 @@
+let playerScore = document.querySelector('.player-score');
+let computerScore = document.querySelector('.computer-score');
+let movesLeft = document.querySelector('.moves');
+const rockBtn = document.querySelector('.rock-btn');
+const paperBtn = document.querySelector('.paper-btn');
+const scissorsBtn = document.querySelector('.scissors-btn');
+const result = document.querySelector('.result');
+const buttons = document.querySelectorAll('button');
+
+const playAgainBtn = document.createElement('button');
+playAgainBtn.style.cssText = 'display: block; margin: 1.2rem auto; padding: 1rem; background-color: red;'
+playAgainBtn.textContent = 'Play again';
+
+
 //to get a ramdom integer from min to max (both included)
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -22,23 +36,39 @@ function playRound(playerSelection, computerSelection) {
 }
 
 //main function
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let i = 0; i < 5; i++) {
+function game(playerTurn) {
+
         const computerTurn = computerPlay();
-        let playerTurn = prompt('Your turn!').toLowerCase();
-        if (playRound(playerTurn, computerTurn) === 'win') {
-            playerScore++;
-            console.log(`You Win! ${playerTurn} beats ${computerTurn}. Score: ${playerScore} : ${computerScore}`);
-        } else if (playRound(playerTurn, computerTurn) === 'lose') {
-            computerScore++;
-            console.log(`You Lose! ${computerTurn} beats ${playerTurn}. Score: ${playerScore} : ${computerScore}`);
+        movesLeft.textContent = +(movesLeft.textContent) - 1;
+
+        if (+(movesLeft.textContent) !== 0) {
+            if (playRound(playerTurn, computerTurn) === 'win') {
+                playerScore.textContent = +(playerScore.textContent) + 1;
+                result.textContent = `You won! ${playerTurn} beats ${computerTurn}`;
+                
+            } else if (playRound(playerTurn, computerTurn) === 'lose') {
+                computerScore.textContent = +(computerScore.textContent) + 1;                
+                result.textContent = `You lose! ${computerTurn} beats ${playerTurn}`;
+            } else {
+                result.textContent = 'Tie!';
+            }
         } else {
-            console.log(`Tie! Score: ${playerScore} : ${computerScore}`);
+            result.textContent = (+(playerScore.textContent) > +(computerScore.textContent) ? `You won the game!` : +(playerScore.textContent) < +(computerScore.textContent) ? `Game over!` : `Tie!`);
+            result.appendChild(playAgainBtn);
         }
-    }
-    console.log(playerScore > computerScore ? `You won the game! Score: ${playerScore} : ${computerScore}` : playerScore < computerScore ? `Game over! Score: ${playerScore} : ${computerScore}` : `Tie! Score: ${playerScore} : ${computerScore}`);
+        
+    playAgainBtn.addEventListener('click', (e) => {
+        playerScore.textContent = '0';
+        computerScore.textContent = '0';
+        movesLeft.textContent = '5';
+        result.textContent = '';
+    })
+
 }
 
-game();
+buttons.forEach(button => button.addEventListener('click', (e) => {
+    if (movesLeft.textContent > 0) {
+        let selected = e.target.textContent.toLowerCase();
+        game(selected);
+    }
+}));

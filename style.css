@@ -1,0 +1,43 @@
+body {
+    background-color: rgb(19, 19, 156);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.game-status {
+    display: flex;
+    justify-content: center;
+    gap: 8rem;
+}
+
+button {
+    padding: 1.5rem 2rem;
+    background-color: rgb(13, 133, 13);
+    color: inherit;
+    border: .15rem solid rgb(19, 19, 156);
+    border-radius: .8rem;
+    font-size: inherit;
+}
+
+button:hover {
+    background-color: rgb(7, 99, 7);
+    border-color: white;
+}
+
+.options {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 5rem;
+}
+
+.container h1 {
+    font-size: 3rem;
+    transform: scale(1, 1.2);
+}
+
+.result {
+    margin: 4rem 0;
+}
